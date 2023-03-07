@@ -141,7 +141,7 @@
 			'boy' => ($this->boy)?$this->boy:1,
 			'deger_ucreti' => ($this->deger_ucreti)?$this->deger_ucreti:'0.0',
 			'desi' => ($this->desi)?$this->desi:1,
-			'ekhizmet' => ($this->ekhizmet)?$this->ekhizmet:1,
+			'ekhizmet' => ($this->ekhizmet)?$this->ekhizmet:'',
 			'en' => ($this->en)?$this->en:1,
 			'musteriReferansNo' => ($this->referenceNo)?$this->referenceNo:0,
 			'odemesekli' => ($this->odemesekli)?$this->odemesekli:'',
