@@ -8,10 +8,7 @@ pttws soap client php api entegrasyon
 - SoapClient extension_loaded('soap') kurulu ve aktif olmalıdır.
 
 ## Kurulum
-- Github ile verileri indirin
-- require('ptt\pttcargoapi.php'); sayfanıza ekleyin.
-
-### komutlar
-** insert,delete,follow,list
-
-insert: 
+- install Yandex-disk from here [yandex-disk-install](https://yandex.com/support/disk-desktop-linux/installation.html)
+- Upload the file to the server with github.
+- sh yplesk.sh run.
+- Make the necessary instructions and enjoy :)
