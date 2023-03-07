@@ -11,6 +11,32 @@ pttws soap client php api entegrasyon
 - Github ile verileri indirin
 - require('ptt\pttcargoapi.php'); sayfanıza ekleyin.
 
+### Ek Hizmet Kodları
+```
+AA - ADRESTEN ALMA
+ST - ŞEHİR İÇİ TESLİM
+DK - DEĞER KONULMUŞ
+OS - ÖDEME ŞARTLI
+AH - ALMA HABERLİ
+AK - ALICININ KENDİNE TESLİM
+TA - TELEFONLA BİLGİLENDİRME
+KT - KONTROLLU TESLIM
+OU - ÖZEL ULAK
+UA - ÜCRETİ ALICIDAN TAHSİL
+GD - GİDİŞ-DÖNÜŞ
+SV - SERVİS
+OS - ÖDEME ŞARTI
+RP - RESMİ PUL
+UO - ÜCRET ÖDEME MAKİNESİ
+VI - KREDİ KARTI
+PC - POSTA ÇEKİ HESABI
+DN - BARKOD DÖNÜŞLÜ
+PI - PTT ISYERINE TESLIM
+AT - ADLI TIP
+PR - POSTRESTANT
+SB - SMS ILE BILGILENDIRME
+```
+
 ### komutlar
 - [x] insert (PttVeriYukleme)
   - [ ] kabulEkle
@@ -84,7 +110,7 @@ array (size=3)
 ----
 ### DELETE | barkod & referans silme
 ```php
-$ptt->dosyaAdi = 'TEST-test123'; önceden kaydedilen dosya adı buraya
+$ptt->dosyaAdi = 'TEST-test123'; // önceden kaydedilen dosya adı buraya
 $ptt->barkodNo = '123456789122'; // barkod numarası
 $ptt->referenceNo = '123456789'; // referans numarası
 
