@@ -7,7 +7,7 @@ pttws soap client php api entegrasyon
 - PHP 5.6.x ve üzeri !
 - SoapClient extension_loaded('soap') kurulu ve aktif olmalıdır.
 
-## Kurulum
+### Kurulum
 - Github ile verileri indirin
 - require('ptt\pttcargoapi.php'); sayfanıza ekleyin.
 
@@ -37,13 +37,13 @@ pttws soap client php api entegrasyon
     - [ ] shipmentinquiryen
     - [ ] referanssorgu (kaldırılmıştır|deprecated)
     
-## KULLANIM
+### KULLANIM
 api dosyamız aktarıkır ve fonksiyon çağırılır.
 ```php
 require('ptt/pttcargoapi.php');
 $ptt = new \ptt\pttcargoapi\pttws('customerId','customerPassword'); // ptt tarafından verilen kodlar
 ```
-### INSERT | VERİYÜKLEME
+#### INSERT | VERİYÜKLEME
 
 ```php
 $ptt->method = 'test'; // test | live
@@ -82,7 +82,7 @@ array (size=3)
   'hataKodu' => int 1
 ```
 ----
-### DELETE | BARKOD VE REFERANS SİLME
+### DELETE | barkod & referans silme
 ```php
 $ptt->dosyaAdi = 'TEST-test123'; önceden kaydedilen dosya adı buraya
 $ptt->barkodNo = '123456789122'; // barkod numarası
@@ -98,10 +98,10 @@ array (size=2)
   'hataKodu' => int -4
 ```
 ----
-### LIST | gönderi barkod & referans sorgulama
+### LIST - FOLLOW | gönderi barkod & referans sorgulama
 ```php
 $result = $ptt->getRefcode('1234567890');
-$result = $ptt->getBarcode('KPveyanormalbarkod');
+$result = $ptt->getBarcode('barkod'); // KPxxxxxxxxxx veya barkodno
 
 var_dump($result);
 
@@ -109,6 +109,24 @@ C:\wamp\www\ptttest\index.php:374:
 array (size=2)
   'aciklama' => string 'Barkod veya dosyaadi hatali' (length=27)
   'hataKodu' => int -4
+
+```
+----
+### LIST | gönderi işlem tarihi sorgulama
+```php
+$result = $ptt->getDate('2023-03-03');
+
+var_dump($result);
+
+C:\wamp\www\ptttest\index.php:374:
+array (size=5)
+  'aciklama' => string 'gonderiHareketIslemTarihiSorgu : KAYIT YOK' (length=42)
+  'barkod_devam' => string '' (length=0)
+  'rcode' => int -10
+  'sqlcode' => int -10
+  'dongu' => 
+    array (size=0)
+      empty
 
 ```
 ----
