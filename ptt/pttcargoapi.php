@@ -2,12 +2,12 @@
 /**
  * @packageName: pttws
  * @packageDescription: ptt cargo api
- * @packageVersion: 1.0.1
+ * @packageVersion: 1.0.2
  * @packageAuthor: trfoxs
  * @packageLicense: MIT License
  * @packageUrl: MIT License
  * 
- *  @link https://github.com/trfoxs/pttws-kargo-api
+ * @link https://github.com/trfoxs/pttws-kargo-api
  * 
  *  Copyright (c) 2014-2023 ptt\pttcargoapi
  *  
@@ -35,17 +35,22 @@
  class pttws {
 	/**
 	 * private $customer, $password
+	 * @var string
 	 */
 	private $customer, $password;
+	
 	/**
-	 * public strign
+	 * public
+	 * @var strign
 	 */
 	public  $method = 'test', $aAdres, $agirlik, $aliciAdi, $aliciIlAdi, $aliciIlceAdi,
 			$aliciSms, $referenceNo, $boy, $deger_ucreti, $desi, $ekhizmet, $en, 
 			$odemesekli, $odeme_sart_ucreti, $yukseklik, $aliciEmail, $rezerve1, $barkodNo, 
-			$dosyaAdi, $kullanici = 'PttWs', $gonderiTip = 'NORMAL', $gonderiTur = 'KARGO';
+			$dosyaAdi, $kullanici = 'PttWs', $gonderiTip = 'NORMAL', $gonderiTur = 'KARGO', $gonderici_adi, $gonderici_adres, $gonderici_email, $gonderici_il, $gonderici_ilce, $gonderici_posta, $gonderici_telefon, $gonderici_ulke_id = '052';
+			
 	/**
-	 * private (Array object)$items
+	 * private
+	 * @var array
 	 */
 	private $items = [];
 	
@@ -63,6 +68,7 @@
 	/**
 	 * public barcodeDelete()
 	 * require $this barkodNo,dosyaAdi,customer,password
+	 * @var strign
 	 */
 	public function barcodeDelete(){
 		try {
@@ -91,6 +97,7 @@
 	/**
 	 * public refcodeDelete()
 	 * require $this referenceNo,dosyaAdi,customer,password
+	 * @var strign
 	 */
 	public function refcodeDelete(){
 		try {
@@ -118,7 +125,8 @@
 	
 	/**
 	 * public insert()
-	 * require (Array Object)$this->items
+	 * require $this->items
+	 * @var strign & array
 	 */
 	public function insert(){
 		if (is_null($this->items)) {
@@ -147,7 +155,18 @@
 			'odemesekli' => ($this->odemesekli)?$this->odemesekli:'',
 			'odeme_sart_ucreti' => ($this->odeme_sart_ucreti)?$this->odeme_sart_ucreti:0,
 			'rezerve1' => ($this->rezerve1)?$this->rezerve1:'',
-			'yukseklik' => ($this->yukseklik)?$this->yukseklik:1
+			'yukseklik' => ($this->yukseklik)?$this->yukseklik:1,
+			'gondericibilgi' => [
+				'gonderici_adi' => $this->gonderici_adi, 
+				'gonderici_adresi' => $this->gonderici_adres, 
+				'gonderici_email' => $this->gonderici_email, 
+				'gonderici_il_ad' => $this->gonderici_il, 
+				'gonderici_ilce_ad' => $this->gonderici_ilce, 
+				'gonderici_posta_kodu' => $this->gonderici_posta, 
+				'gonderici_telefonu' => $this->gonderici_telefon, 
+				'gonderici_sms' => $this->gonderici_telefon, 
+				'gonderici_ulke_id' => $this->gonderici_ulke_id
+			]
 		]);
 		
 		try {
@@ -178,7 +197,8 @@
 
 	/**
 	 * public getBarcode($barcode)
-	 * require $barcode string
+	 * require $barcode
+	 * @var strign
 	 */
 	public function getBarcode($barcode) {
 		try {
@@ -205,7 +225,8 @@
 	
 	/**
 	 * public getRefcode($refcode)
-	 * require $refcode string
+	 * require $refcode
+	 * @var strign
 	 */
 	public function getRefcode($refcode) {
 		try {
@@ -213,9 +234,9 @@
 
 			$data = $soap->gonderisorgu_referansno([
 				'input' => [
-					'musteri_no' => $this->customer,
+					'kullanici' => $this->customer,
 					'sifre' => $this->password,
-					'referansNo' => $refcode,
+					'referansNo' => $refcode
 				]
 			]);
 
@@ -232,7 +253,8 @@
 	
 	/**
 	 * public getRefcode($date)
-	 * require $date string
+	 * require $date
+	 * @var strign
 	 */
 	public function getDate($date) {
 		if ( ! $this->validateDate($date) ){
@@ -286,6 +308,7 @@
 	 * public calBarcode($barkodIncrementId)
 	 * require (int)$barkodIncrementId
 	 * calculate barcode ptt
+	 * @var int
 	 */
 	public function calBarcode($barkodIncrementId) {
 		$carpanSplit = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3];
@@ -311,8 +334,9 @@
 	
 	/**
 	 * protected getWs($ws)
-	 * require $ws (insert,delete,list,follow) strign
+	 * require $ws (insert,delete,list,follow)
 	 * soap client
+	 * @var strign
 	 */
 	protected function getWs($ws = null) {
 		$run = '';
@@ -342,7 +366,8 @@
 	
 	/**
 	 * protected validateDate($date)
-	 * require $date strign
+	 * require $date
+	 * @var strign
 	 */
 	protected function validateDate($date, $format = 'Y-m-d'){
 		$d = \DateTime::createFromFormat($format, $date);
