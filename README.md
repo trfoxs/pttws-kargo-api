@@ -182,7 +182,7 @@ array (size=5)
       0 => 
         array (size=34)
           'agirlik' => string '500' (length=3)
-          'barkod_no' => string 'KP02564546802' (length=13)
+          'barkod_no' => string 'KP02XXXXXXXXX' (length=13)
           'boy' => string '10' (length=2)
           'deger_konulmus_ucret' => string '0.00' (length=4)
           'desi' => string '0.33' (length=4)
