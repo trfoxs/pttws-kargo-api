@@ -94,13 +94,13 @@ $ptt->odemesekli = ''; // Mahsup=MH, Nakit=N, Ücreti alıcıdan=UA, Kapıda Öd
 $ptt->odeme_sart_ucreti= 200; // Gönderi teslim edilirken alıcıdan ürün fiyatı temin edilecekse gönderilir yoksa 0 yazınız
 
 // gönderici bilgileri
-$asd->gonderici_adi = 'Mehmet YURT';
-$asd->gonderici_adres = 'alkan mah. yılmaz sok no 1/A';
-$asd->gonderici_email = 'mehmet.yurt@example.com';
-$asd->gonderici_telefon = '5550001122';
-$asd->gonderici_il = 'istanbul';
-$asd->gonderici_ilce = 'avcılar';
-$asd->gonderici_ulke_id = '052'; // varsayılan 052 sabittir ve isteğe bağlı veridir, lütfen kılavuza bakınız.
+$ptt->gonderici_adi = 'Mehmet YURT';
+$ptt->gonderici_adres = 'alkan mah. yılmaz sok no 1/A';
+$ptt->gonderici_email = 'mehmet.yurt@example.com';
+$ptt->gonderici_telefon = '5550001122';
+$ptt->gonderici_il = 'istanbul';
+$ptt->gonderici_ilce = 'avcılar';
+$ptt->gonderici_ulke_id = '052'; // varsayılan 052 sabittir ve isteğe bağlı veridir, lütfen kılavuza bakınız.
 
 $result = $ptt->insert(); // veriler gönderildi.
 
