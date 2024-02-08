@@ -2,7 +2,7 @@
 /**
  * @packageName: pttws
  * @packageDescription: ptt cargo api
- * @packageVersion: 1.0.2
+ * @packageVersion: 1.0.2.1
  * @packageAuthor: trfoxs
  * @packageLicense: MIT License
  * @packageUrl: MIT License
@@ -43,16 +43,18 @@
 	 * public
 	 * @var strign
 	 */
-	public  $method = 'test', $aAdres, $agirlik, $aliciAdi, $aliciIlAdi, $aliciIlceAdi,
-			$aliciSms, $referenceNo, $boy, $deger_ucreti, $desi, $ekhizmet, $en, 
-			$odemesekli, $odeme_sart_ucreti, $yukseklik, $aliciEmail, $rezerve1, $barkodNo, 
-			$dosyaAdi, $kullanici = 'PttWs', $gonderiTip = 'NORMAL', $gonderiTur = 'KARGO', $gonderici_adi, $gonderici_adres, $gonderici_email, $gonderici_il, $gonderici_ilce, $gonderici_posta, $gonderici_telefon, $gonderici_ulke_id = '052';
+	public  $method = 'test', $aAdres, $agirlik = 1, $aliciAdi, $aliciIlAdi, $aliciIlceAdi,
+			$aliciSms, $referenceNo, $boy = 1, $deger_ucreti = 0, $desi = 1, $ekhizmet = '', $en = 1, 
+			$odemesekli = '', $odeme_sart_ucreti = 0, $yukseklik = 1, $aliciEmail, $rezerve1 = '', $barkodNo = 0, 
+			$dosyaAdi, $kullanici = 'PttWs', $gonderiTip = 'NORMAL', $gonderiTur = 'KARGO', $gonderici_adi = '', $gonderici_adres = '', $gonderici_email = '', $gonderici_il = '', $gonderici_ilce = '', $gonderici_posta = '', $gonderici_telefon = '', $gonderici_ulke_id = '052';
 			
 	/**
 	 * private
 	 * @var array
 	 */
 	private $items = [];
+	
+	private $error = false;
 	
 	public function __construct($customer = null, $password = null){
 		$this->customer = $customer;
@@ -63,6 +65,14 @@
 		}
 		
 		//print_r($this);
+	}
+	
+	/**
+	 * public
+	 * @var array
+	 */
+	public function getError() {
+		return $this->error;
 	}
 	
 	/**
@@ -90,7 +100,7 @@
 			}
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 	
@@ -119,7 +129,7 @@
 			}
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 	
@@ -139,23 +149,23 @@
 		
 		array_push($this->items, [
 			'aAdres' => $this->aAdres,
-			'agirlik' => ($this->agirlik)?$this->agirlik:1,
+			'agirlik' => $this->agirlik,
 			'aliciAdi' => $this->aliciAdi,
 			'aliciIlAdi' => $this->aliciIlAdi,
 			'aliciIlceAdi' => $this->aliciIlceAdi,
 			'aliciSms' => ($this->aliciSms)?$this->aliciSms:'',
 			'aliciEmail' => ($this->aliciEmail)?$this->aliciEmail:'',
-			'barkodNo' => ($this->barkodNo)?$this->barkodNo:'',
-			'boy' => ($this->boy)?$this->boy:1,
-			'deger_ucreti' => ($this->deger_ucreti)?$this->deger_ucreti:'0.0',
-			'desi' => ($this->desi)?$this->desi:1,
-			'ekhizmet' => ($this->ekhizmet)?$this->ekhizmet:'',
-			'en' => ($this->en)?$this->en:1,
+			'barkodNo' => $this->barkodNo,
+			'boy' => $this->boy,
+			'deger_ucreti' => $this->deger_ucreti,
+			'desi' => $this->desi,
+			'ekhizmet' => $this->ekhizmet,
+			'en' => $this->en,
 			'musteriReferansNo' => ($this->referenceNo)?$this->referenceNo:0,
-			'odemesekli' => ($this->odemesekli)?$this->odemesekli:'',
-			'odeme_sart_ucreti' => ($this->odeme_sart_ucreti)?$this->odeme_sart_ucreti:0,
-			'rezerve1' => ($this->rezerve1)?$this->rezerve1:'',
-			'yukseklik' => ($this->yukseklik)?$this->yukseklik:1,
+			'odemesekli' => $this->odemesekli,
+			'odeme_sart_ucreti' => $this->odeme_sart_ucreti,
+			'rezerve1' => $this->rezerve1,
+			'yukseklik' => $this->yukseklik,
 			'gondericibilgi' => [
 				'gonderici_adi' => $this->gonderici_adi, 
 				'gonderici_adresi' => $this->gonderici_adres, 
@@ -191,7 +201,7 @@
 			}
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 
@@ -219,7 +229,7 @@
 			}
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 	
@@ -247,7 +257,7 @@
 			}
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 	
@@ -300,7 +310,7 @@
 			return $collect;
 
 		}catch ( \SoapFault $fault){
-			return $fault;
+			$this->error = $fault;
 		}
 	}
 	
