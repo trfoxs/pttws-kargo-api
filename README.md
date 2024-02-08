@@ -90,7 +90,7 @@ $ptt->desi = $ptt->en*$ptt->boy*$ptt->yukseklik/3000; // Gönderinin en*boy*yük
 $ptt->deger_ucreti = 0; // sigorta bedeli eklemek için
 $ptt->rezerve1 = '5287402'; // postaçeki varsa gönderici
 $ptt->ekhizmet = ''; // kılavuza bakınız
-$ptt->odemesekli = ''; // Mahsup=MH, Nakit=N, Ücreti alıcıdan=UA, Kapıda Ödeme=N1
+$ptt->odemesekli = ''; // Mahsup=MH, Nakit=N, Ücreti alıcıdan=UA
 $ptt->odeme_sart_ucreti= 200; // Gönderi teslim edilirken alıcıdan ürün fiyatı temin edilecekse gönderilir yoksa 0 yazınız
 
 // gönderici bilgileri
