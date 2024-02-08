@@ -1,5 +1,5 @@
 # PTT KARGO API EXTENDED
-![](https://img.shields.io/badge/Ver.-1.0.2-dark) ![](https://img.shields.io/badge/Author-trfoxs-blue) ![](https://img.shields.io/badge/profile-semihbtr-green?logo=linkedin&style=flat-square) ![](https://shields.io/badge/license-MIT-informational) ![](https://img.shields.io/badge/english-red) ![](https://img.shields.io/badge/turkish-red) @ahmeti :+1: teşekkürler
+![](https://img.shields.io/badge/Ver.-1.0.2.1-dark) ![](https://img.shields.io/badge/Author-trfoxs-blue) ![](https://img.shields.io/badge/profile-semihbtr-green?logo=linkedin&style=flat-square) ![](https://shields.io/badge/license-MIT-informational) ![](https://img.shields.io/badge/english-red) ![](https://img.shields.io/badge/turkish-red) @ahmeti :+1: teşekkürler
 
 pttws soap client php api entegrasyon
 
@@ -88,10 +88,10 @@ $ptt->en = 1; // kargo eni
 $ptt->yukseklik = 1; // kargo eni
 $ptt->desi = $ptt->en*$ptt->boy*$ptt->yukseklik/3000; // Gönderinin en*boy*yükseklik/3000 formülü ile hesaplanır. yoksa 1 yazınız
 $ptt->deger_ucreti = 0; // sigorta bedeli eklemek için
-$ptt->rezerve1 = '5287402'; // postaçeki varsa gönderici
-$ptt->ekhizmet = ''; // kılavuza bakınız
+$ptt->rezerve1 = '12345678'; // postaçeki varsa gönderici kapıda ödeme için
+$ptt->ekhizmet = ''; // kılavuza bakınız, OS kapıda ödeme şart ücreti
 $ptt->odemesekli = ''; // Mahsup=MH, Nakit=N, Ücreti alıcıdan=UA
-$ptt->odeme_sart_ucreti= 200; // Gönderi teslim edilirken alıcıdan ürün fiyatı temin edilecekse gönderilir yoksa 0 yazınız
+$ptt->odeme_sart_ucreti= '100.50'; // Gönderi teslim edilirken alıcıdan ürün fiyatı temin edilecekse gönderilir yoksa 0 yazınız
 
 // gönderici bilgileri
 $ptt->gonderici_adi = 'Mehmet YURT';
